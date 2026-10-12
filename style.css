@@ -1,0 +1,48 @@
+const dataSuit = {
+  bgk: ['Batu', 'Gunting', 'Kertas'],
+  gos: ['Gajah', 'Orang', 'Semut'],
+  jari: ['Jempol', 'Telunjuk', 'Kelingking']
+};
+
+function gantiMode() {
+  let mode = document.getElementById('pilihMode').value;
+  let pilihan = dataSuit[mode];
+  let div = document.getElementById('areaTombol');
+  
+  div.innerHTML = '';
+  pilihan.forEach(item => {
+    let btn = document.createElement('button');
+    btn.innerText = item;
+    btn.onclick = () => mainkan(item, pilihan);
+    div.appendChild(btn);
+  });
+}
+
+function mainkan(user, pilihan) {
+  let comp = pilihan[Math.floor(Math.random() * pilihan.length)];
+  let hasil = '';
+
+  if (user === comp) {
+    hasil = 'SERI!';
+  } else if (
+    (user === 'Batu' && comp === 'Gunting') ||
+    (user === 'Gunting' && comp === 'Kertas') ||
+    (user === 'Kertas' && comp === 'Batu') ||
+    (user === 'Gajah' && comp === 'Orang') ||
+    (user === 'Orang' && comp === 'Semut') ||
+    (user === 'Semut' && comp === 'Gajah') ||
+    (user === 'Jempol' && comp === 'Telunjuk') ||
+    (user === 'Telunjuk' && comp === 'Kelingking') ||
+    (user === 'Kelingking' && comp === 'Jempol')
+  ) {
+    hasil = 'KAMU MENANG!';
+  } else {
+    hasil = 'KAMU KALAH!';
+  }
+
+  document.getElementById('hasilUser').innerText = user;
+  document.getElementById('hasilComp').innerText = comp;
+  document.getElementById('infoHasil').innerText = hasil;
+}
+
+window.onload = gantiMode;
