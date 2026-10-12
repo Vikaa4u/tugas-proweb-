@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Suit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="kotak">
+    <h2>Game Suit Tradisional</h2>
+
+    <label>Pilih Jenis Suit:</label>
+    <select id="pilihMode" onchange="gantiMode()">
+      <option value="bgk">Batu Gunting Kertas</option>
+      <option value="gos">Gajah Orang Semut</option>
+      <option value="jari">Suit Jari</option>
+    </select>
+
+    <div id="areaTombol" style="margin: 15px 0;"></div>
+
+    <hr>
+    <p>Pilihan Kamu: <b id="hasilUser">-</b></p>
+    <p>Pilihan Komputer: <b id="hasilComp">-</b></p>
+    <h3 id="infoHasil">Ayo mulai main!</h3>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
