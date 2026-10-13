@@ -1,48 +1,101 @@
-const dataSuit = {
-  bgk: ['Batu', 'Gunting', 'Kertas'],
-  gos: ['Gajah', 'Orang', 'Semut'],
-  jari: ['Jempol', 'Telunjuk', 'Kelingking']
-};
 
-function gantiMode() {
-  let mode = document.getElementById('pilihMode').value;
-  let pilihan = dataSuit[mode];
-  let div = document.getElementById('areaTombol');
-  
-  div.innerHTML = '';
-  pilihan.forEach(item => {
-    let btn = document.createElement('button');
-    btn.innerText = item;
-    btn.onclick = () => mainkan(item, pilihan);
-    div.appendChild(btn);
-  });
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef2f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-function mainkan(user, pilihan) {
-  let comp = pilihan[Math.floor(Math.random() * pilihan.length)];
-  let hasil = '';
+.kotak {
+  background: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 490px;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.10);
+  text-align: center;
+  box-sizing: border-box;
+}
 
-  if (user === comp) {
-    hasil = 'SERI!';
-  } else if (
-    (user === 'Batu' && comp === 'Gunting') ||
-    (user === 'Gunting' && comp === 'Kertas') ||
-    (user === 'Kertas' && comp === 'Batu') ||
-    (user === 'Gajah' && comp === 'Orang') ||
-    (user === 'Orang' && comp === 'Semut') ||
-    (user === 'Semut' && comp === 'Gajah') ||
-    (user === 'Jempol' && comp === 'Telunjuk') ||
-    (user === 'Telunjuk' && comp === 'Kelingking') ||
-    (user === 'Kelingking' && comp === 'Jempol')
-  ) {
-    hasil = 'KAMU MENANG!';
-  } else {
-    hasil = 'KAMU KALAH!';
+h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 9px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 25px;
+  background: white;
+  box-sizing: border-box;
+}
+
+#areaTombol {
+  margin: 15px 0 25px;
+}
+
+button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 13px 20px;
+  margin: 5px 3px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 17px;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #357abd;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 25px 0;
+}
+
+p {
+  color: #555;
+  font-size: 17px;
+  margin: 12px 0;
+}
+
+#infoHasil {
+  font-size: 24px;
+  color: #333;
+  margin-top: 25px;
+}
+
+@media (max-width: 480px) {
+  .kotak {
+    padding: 22px;
   }
 
-  document.getElementById('hasilUser').innerText = user;
-  document.getElementById('hasilComp').innerText = comp;
-  document.getElementById('infoHasil').innerText = hasil;
-}
+  h2 {
+    font-size: 23px;
+  }
 
-window.onload = gantiMode;
+  button {
+    padding: 11px 14px;
+    font-size: 15px;
+  }
+}
